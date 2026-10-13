@@ -1,0 +1,67 @@
+# Dependencies
+**/node_modules/
+**/vendor/
+
+# Build output
+**/dist/
+**/build/
+**/out/
+**/.next/
+**/.turbo/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# Cache
+.cache/
+**/.cache/
+**/.turbo/
+**/.eslintcache/
+**/.tsbuildinfo
+
+# Operating system
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors and IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.orig
+
+# TypeScript
+**/dist/
+*.tsbuildinfo
+
+# Prisma
+**/prisma/*.db
+**/prisma/*.db-journal
+
+# PHP
+front-end/vendor/
+front-end/.phpunit.cache/
+
+# Local configuration
+*.local

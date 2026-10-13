@@ -1,0 +1,23 @@
+import "dotenv/config";
+import { defineConfig } from "prisma/config";
+
+const [dbUser, dbPass, dbHost, dbName] = [
+    process.env["DB_USER"], 
+    process.env["DB_PASS"],
+    process.env["DB_HOST"],
+    process.env["DB_NAME"],
+  ]
+if (!dbUser || !dbPass || !dbHost || !dbName) {
+  throw new Error("Database details must be specified")
+}
+const url = `postgresql://${dbUser}:${dbPass}@${dbHost}/${dbName}`
+
+export default defineConfig({
+  schema: "prisma/schema.prisma",
+  migrations: {
+    path: "prisma/migrations",
+  },
+  datasource: {
+    url,
+  },
+});

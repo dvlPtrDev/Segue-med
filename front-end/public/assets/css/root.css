@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+:root {
+    --white: #ffffff;
+
+    --text-dark: #012d42;
+    --text-secondary: #2b5063;
+
+    --dark-blue: #00314f;
+    --contrast-blue: #00293f;
+
+    --gradient-0: #00314f;
+    --gradient-1: #0284a2;
+    --gradient-2: #3dbf9e;
+
+    --background: #eaf2f5;
+    --background-light: #fdfdfd;
+
+    --shadow-color: #e9edf0;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text-dark);
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+

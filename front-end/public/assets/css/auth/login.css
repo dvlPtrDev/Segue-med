@@ -1,0 +1,387 @@
+
+.auth-shell {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: minmax(360px, 42%) 1fr;
+}
+
+.brand-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px clamp(32px, 7vw, 112px);
+    color: #fff;
+    background: linear-gradient(var(--ink), var(--teal));
+}
+
+.brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.brand-mark {
+    position: relative;
+    width: 34px;
+    height: 34px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.brand-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+.brand-name {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -.6px;
+}
+
+.brand-copy {
+    max-width: 470px;
+    margin: auto 0;
+    padding: 70px 0;
+}
+
+.eyebrow,
+.form-kicker {
+    margin: 0 0 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.eyebrow {
+    color: var(--mint);
+}
+
+.brand-copy h1 {
+    max-width: 450px;
+    margin: 0 0 24px;
+    font-size: clamp(40px, 4vw, 50px);
+    line-height: .98;
+    letter-spacing: -3.2px;
+    font-weight: 600;
+}
+
+.brand-description {
+    max-width: 400px;
+    margin: 0;
+    color: #d4efeb;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.trust-note {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    max-width: 360px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, .25);
+}
+
+.shield-icon {
+    display: grid;
+    width: 30px;
+    height: 30px;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--mint);
+    color: var(--teal-dark);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.trust-note span {
+    display: block;
+    color: #c4e7e2;
+    font-size: 12px;
+}
+
+.trust-note a {
+    color: var(--paper);
+}
+
+.form-panel {
+    display: grid;
+    place-items: center;
+    padding: 32px;
+    background: var(--paper);
+}
+
+.form-wrap {
+    width: min(100%, 480px);
+}
+
+.form-header {
+    margin: 30px 0 28px;
+}
+
+.form-kicker {
+    margin-bottom: 12px;
+    color: var(--teal);
+}
+
+.form-header h2 {
+    margin: 0 0 10px;
+    font-size: 31px;
+    line-height: 1.1;
+    letter-spacing: -1.2px;
+    font-weight: 600;
+}
+
+.form-header p:last-child {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.field-group label {
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 700;
+}
+.field-group label .required {
+    color: #d9534f;
+}
+
+.field-group input {
+    width: 100%;
+    height: 49px;
+    padding: 0 15px;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    outline: none;
+    background: #fbfdfd;
+    color: var(--ink);
+    font: inherit;
+    font-size: 14px;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.field-group input:focus {
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px rgba(22, 140, 131, .13);
+}
+
+.field-group input::placeholder {
+    color: #9aaeb1;
+}
+
+.field-group small {
+    margin-top: -2px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.password-wrapper input[type="password"] {
+    padding-right: 42px; 
+}
+
+.toggle-container {
+    position: absolute;
+    right: 12px;
+    cursor: pointer;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    transition: color 0.2s;
+}
+
+.toggle-container:hover {
+    color: var(--teal);
+}
+
+.toggle-container .disabled {
+    display: none;
+}
+
+
+
+.checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    margin: 8px 0 10px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.checkbox-row input {
+    width: 16px;
+    height: 16px;
+    margin-top: 1px;
+    flex: 0 0 auto;
+    accent-color: var(--teal);
+}
+
+.checkbox-row a {
+    color: var(--teal-dark);
+}
+
+.primary-button,
+.secondary-button {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.primary-button {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 18px;
+    border: 1px solid var(--teal);
+    background: var(--teal);
+    color: #fff;
+    transition: background .2s;
+}
+
+.primary-button:hover {
+    background: var(--teal-dark);
+}
+
+.primary-button span {
+    font-size: 21px;
+    font-weight: 400;
+}
+.primary-button:disabled {
+    background-color: rgb(89, 171, 171);
+    cursor: auto;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 27px 0 18px;
+    color: #9aaeb1;
+    font-size: 12px;
+}
+
+.divider::before,
+.divider::after {
+    height: 1px;
+    flex: 1;
+    background: var(--line);
+    content: '';
+}
+
+.secondary-button {
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid var(--line);
+    color: var(--teal-dark);
+    background: #fff;
+}
+
+.secondary-button:hover {
+    background: var(--mist);
+}
+
+.support-copy {
+    margin: 34px 0 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.mobile-brand {
+    display: none;
+}
+
+@media (max-width: 780px) {
+    .auth-shell {
+        display: block;
+    }
+
+    .brand-panel {
+        display: none;
+    }
+
+    .form-panel {
+        min-height: 100vh;
+        padding: 36px 24px;
+    }
+
+    .mobile-brand {
+        display: flex;
+    }
+
+    .mobile-brand .brand-mark {
+        border-color: var(--teal);
+    }
+
+    .mobile-brand .brand-mark span {
+        background: var(--teal);
+    }
+
+    .mobile-brand .brand-name {
+        color: var(--ink);
+    }
+
+    .form-header {
+        margin-top: 52px;
+    }
+}
+
+@media (max-width: 480px) {
+    .field-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 420px) {
+    .form-panel {
+        padding-inline: 20px;
+    }
+
+    .form-header h2 {
+        font-size: 28px;
+    }
+}

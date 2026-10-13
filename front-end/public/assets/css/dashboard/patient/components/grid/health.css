@@ -1,0 +1,100 @@
+/* grid/health.php — estilos limitados a . */
+
+ .health-grid {
+    display: grid;
+    gap: 10px;
+}
+ .health-item {
+    background: var(--mist);
+    border-radius: 8px;
+    margin: 15px 15px 15px 15px;
+    padding: 10px;
+}
+
+ .health-item span {
+    display: block;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+ .health-item strong {
+    font-size: 15px;
+}
+
+ .health-item small {
+    display: block;
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+ label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+ input,
+ select {
+    width: 100%;
+    min-width: 0;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    padding: 10px 12px;
+    background: white;
+    color: var(--ink);
+}
+
+@media(min-width:600px) {
+     .health-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+ button,
+ input,
+ select {
+    font: inherit;
+}
+
+ button,
+ a,
+ input,
+ select {
+    -webkit-tap-highlight-color: transparent;
+}
+
+ a {
+    color: var(--teal-dark);
+}
+
+ button {
+    cursor: pointer;
+}
+
+ button,
+ input,
+ select {
+    min-height: 44px;
+}
+
+ :focus-visible {
+    outline: 3px solid var(--teal);
+    outline-offset: 4px;
+}
+
+ h2 {
+    font-size: 17px;
+    margin: 0;
+}
+
+ h3 {
+    font-size: 14px;
+    margin: 0 0 6px;
+}
+
+ p {
+    margin: 0 0 10px;
+}

@@ -1,0 +1,244 @@
+generator client {
+  provider = "prisma-client"
+  output   = "./generated"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  ADMIN_OWNER
+  PHARMACY
+  PATIENT
+}
+
+enum PrescriptionStatus {
+  ACTIVE
+  EXPIRED
+  CANCELED
+}
+
+enum PrescriptionRequirement {
+  OTC
+  PRESCRIPTION
+  CONTROLLED
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  PAST_DUE
+  CANCELED
+  TRIALING
+}
+
+// ---------------------------------------------------------
+// USUÁRIOS E FARMÁCIA
+// ---------------------------------------------------------
+
+model User {
+  id          Int       @id @default(autoincrement())
+  auth_ref    Int       @unique  
+  user_role   UserRole  @default(PATIENT)
+
+  patient     Patient?
+  pharmacy    Pharmacy? 
+
+  @@map("users")
+}
+
+model Pharmacy {
+    id           Int       @id @default(autoincrement())
+    user_id      Int       @unique
+    address_id   Int?      @unique
+
+    name         String
+    cnpj         String    @unique
+    phone        String?
+    created_at   DateTime  @default(now())
+
+    user         User      @relation(fields: [user_id], references: [id])
+    address      Address?  @relation(fields: [address_id], references: [id])
+
+    services     CustomerService[]
+    subscription Subscription?
+
+    @@map("pharmacies")
+}
+
+// ---------------------------------------------------------
+// COBRANÇA
+// ---------------------------------------------------------
+
+model Plan {
+  id            Int            @id @default(autoincrement())
+  name          String
+  price_cents   Int
+  max_users     Int?
+
+  subscriptions Subscription[]
+  @@map("plans")
+}
+
+model Subscription {
+  id                  Int                 @id @default(autoincrement())
+  pharmacy_id         Int                 @unique
+  plan_id             Int
+  status              SubscriptionStatus  @default(TRIALING)
+  started_at          DateTime            @default(now())
+  current_period_end  DateTime?
+
+  pharmacy            Pharmacy @relation(fields: [pharmacy_id], references: [id])
+  plan                Plan     @relation(fields: [plan_id], references: [id])
+  @@map("subscriptions")
+}
+
+// ---------------------------------------------------------
+// PACIENTE
+// ---------------------------------------------------------
+
+model Patient {
+  id              Int          @id @default(autoincrement())
+  user_id         Int          @unique
+  address_id      Int?         @unique
+
+  name            String
+  cpf             String       @unique
+  birth_date      DateTime     @db.Date
+  phone           String?
+  
+  user            User         @relation(fields: [user_id], references: [id])
+  address         Address?     @relation(fields: [address_id], references: [id])
+
+  record          MedicalRecord?
+  @@map("patients")
+}
+
+model State {
+  id     Int    @id @default(autoincrement())
+  uf     String @db.Char(2)
+  name   String
+  cities City[]
+  @@map("states")
+}
+
+model City {
+  id       Int        @id @default(autoincrement())
+  name     String
+  stateId  Int
+  state    State      @relation(fields: [stateId], references: [id])
+  address  Address[]
+  @@map("cities")
+}
+
+model Address {
+  id           Int     @id @default(autoincrement())
+  cityId       Int
+  street       String
+  cep          String  @db.Char(8)
+  neighborhood String?
+
+  city         City @relation(fields: [cityId], references: [id])
+
+  patient      Patient?
+  pharmacy     Pharmacy?
+
+  @@map("addresses")
+}
+
+// ---------------------------------------------------------
+// ATENDIMENTO / RECEITA
+// ---------------------------------------------------------
+
+model CustomerService {
+  id             Int      @id @default(autoincrement())
+  pharmacy_id    Int
+  record_id      Int      
+  reason         String
+  notes          String?
+  occurred_at    DateTime @default(now()) @db.Timestamptz(6)
+
+  pharmacy       Pharmacy       @relation(fields: [pharmacy_id], references: [id])
+  record         MedicalRecord  @relation(fields: [record_id], references: [id])
+
+  prescriptions  Prescription[]
+
+  @@map("customer_service")
+}
+
+model Medicine {
+  id               Int                      @id @default(autoincrement())
+  prescription_id  Int
+
+  name             String
+  dosage           String?
+  frequency        String?
+  duration         String?
+  quantity         String?
+  instructions     String?
+  requirement      PrescriptionRequirement  @default(OTC)
+
+  prescription     Prescription @relation(fields: [prescription_id], references: [id])
+  @@map("medicines")
+}
+
+model Prescription {
+  id           Int                 @id @default(autoincrement())
+  service_id   Int
+  image_url    String?
+  issue_date   DateTime
+  notes        String?
+  status       PrescriptionStatus
+
+  service      CustomerService  @relation(fields: [service_id], references: [id])
+
+  medicines    Medicine[]
+
+  @@map("prescriptions")
+}
+
+model HealthCondition {
+  id                    Int           @id @default(autoincrement())
+  related_condition_id  Int
+  name                  String
+  notes                 String?
+
+  patient_health        HealthRelated @relation(fields: [related_condition_id], references: [id])
+
+  @@map("health_conditions")
+}
+
+model HealthRelated {
+  id          Int               @id @default(autoincrement())
+  record_id   Int               @unique 
+
+  conditions  HealthCondition[]
+  record      MedicalRecord     @relation(fields: [record_id], references: [id])
+
+  @@map("health_related")
+}
+
+model Exam {
+  id                Int      @id @default(autoincrement())
+  record_id         Int      
+  name              String
+  exam_date         DateTime
+  results           String?
+  result_image_url  String?
+  notes             String?
+
+  record            MedicalRecord @relation(fields: [record_id], references: [id])
+  @@map("exams")
+}
+
+model MedicalRecord {
+  id             Int      @id @default(autoincrement())
+  patient_id     Int      @unique
+
+  patient        Patient           @relation(fields: [patient_id], references: [id])
+  services       CustomerService[]
+  exams          Exam[]
+  health         HealthRelated?
+
+  @@map("medical_records")
+}

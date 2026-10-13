@@ -1,0 +1,67 @@
+/* metrics.php */
+
+:where(#metrics).metrics {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+:where(#metrics) .metric {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px;
+    min-width: 0;
+}
+
+:where(#metrics) .metric-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+:where(#metrics) .metric-icon {
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    background: var(--mist);
+    border-radius: 8px;
+    color: var(--teal-dark);
+    font-size: 18px;
+}
+
+:where(#metrics) .metric-value {
+    display: block;
+    font-size: 29px;
+    letter-spacing: -.7px;
+    font-weight: 700;
+    margin: 8px 0 3px;
+    overflow-wrap: anywhere;
+}
+
+:where(#metrics) .metric-note {
+    color: var(--text-secondary);
+    font-size: 11px;
+}
+
+@media(min-width:375px) {
+    :where(#metrics).metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media(min-width:1200px) {
+    :where(#metrics).metrics {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media(min-width:1200px) {
+    :where(#metrics).metrics.five {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+}

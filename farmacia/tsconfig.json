@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "types": [
+      "node"
+    ],
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "outDir": "dist"
+  },
+  "include": [
+    "**/*.ts"
+, "../front-end/public/assets/js/login.js", "src/shared/internal-auth", "src/features/exams/.schema.ts", "src/features/pharmacy/.controller.ts"  ]
+}

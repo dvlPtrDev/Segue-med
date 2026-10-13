@@ -1,0 +1,136 @@
+/* completion.php */
+
+#complete-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 24px;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--teal);
+    border-radius: 12px;
+    background: var(--paper);
+    color: var(--ink);
+}
+
+#complete-profile[hidden] {
+    display: none;
+}
+
+#complete-profile .complete-profile-content {
+    flex: 1;
+    min-width: 0;
+}
+
+#complete-profile h2 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    line-height: 1.4;
+}
+
+#complete-profile p {
+    max-width: 560px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+#complete-profile .complete-profile-progress {
+    width: 100%;
+    max-width: 440px;
+    margin-top: 18px;
+}
+
+#complete-profile .complete-profile-progress-label {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    margin-bottom: 8px;
+    font-size: 12px;
+}
+
+#complete-profile .complete-profile-progress-label label {
+    margin: 0;
+    font-size: inherit;
+    font-weight: 700;
+}
+
+#complete-profile .complete-profile-progress-label span {
+    color: var(--teal-dark);
+    font-weight: 700;
+}
+
+#complete-profile .complete-profile-bar {
+    display: block;
+    width: 100%;
+    height: 8px;
+    overflow: hidden;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    border-radius: 999px;
+    background: var(--mint);
+    accent-color: var(--teal);
+}
+
+#complete-profile .complete-profile-bar::-webkit-progress-bar {
+    border-radius: 999px;
+    background: var(--mint);
+}
+
+#complete-profile .complete-profile-bar::-webkit-progress-value {
+    border-radius: 999px;
+    background: var(--teal);
+}
+
+#complete-profile .complete-profile-bar::-moz-progress-bar {
+    border-radius: 999px;
+    background: var(--teal);
+}
+
+#complete-profile .complete-profile-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 46px;
+    padding: 12px 18px;
+    border: 1px solid var(--teal-dark);
+    border-radius: 8px;
+    background: var(--teal-dark);
+    color: var(--paper);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+}
+
+#complete-profile .complete-profile-button:hover {
+    border-color: var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+}
+
+#complete-profile .complete-profile-button:focus-visible {
+    outline: 3px solid var(--teal);
+    outline-offset: 3px;
+}
+
+#complete-profile .complete-profile-button span {
+    font-size: 20px;
+}
+
+@media (min-width: 768px) {
+    #complete-profile {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px;
+    }
+    
+    #complete-profile .complete-profile-button {
+        flex-shrink: 0;
+    }
+}

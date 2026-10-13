@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+:root {
+    --ink: #18333d;
+    --muted: #6f858a;
+    --line: #dbe7e6;
+    --paper: #ffffff;
+    --mist: #f1f8f7;
+    --teal: #168c83;
+    --teal-dark: #0e6f69;
+    --mint: #d9f0eb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.alerts-container {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: min(360px, calc(100% - 32px));
+}
+
+.alerts-container .alert {
+    position: relative;
+    right: -500px;
+    margin: 0;
+    padding: 14px 18px;
+    border: 1px solid;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+    overflow-wrap: anywhere;
+    transition: right 1s ease-in-out;
+}
+
+.alert.show {
+    
+    right: 16px;
+}

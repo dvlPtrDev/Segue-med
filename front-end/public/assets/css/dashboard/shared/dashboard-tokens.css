@@ -1,0 +1,14 @@
+:root {
+    --ink: #18333d;
+    --muted: #6f858a;
+    --line: #dbe7e6;
+    --paper: #ffffff;
+    --mist: #f1f8f7;
+    --teal: #168c83;
+    --teal-dark: #0e6f69;
+    --mint: #d9f0eb;
+    --text-secondary: #506b72;
+    --warning: #85541b;
+    --warning-bg: #fff2da;
+    --shadow: 0 4px 20px #18333d06;
+}
